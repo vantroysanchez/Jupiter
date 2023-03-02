@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Vantroy E. Sanchez P.",
+    "classifications": [
+        "Web",
+        "WebAPI"
+    ],
+    "identity": "WebAPI.DDD",
+    "name": "VS WebAPI DDD",
+    "description": "This is a basic template of a WebAPI with DDD.",
+    "shortName": "webapiddd",
+    "sourceName": "Jupiter",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "preferNameDirectory": true
+}
