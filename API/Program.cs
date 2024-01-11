@@ -8,12 +8,11 @@ using WebUI;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .CreateLogger();
-builder.Logging.ClearProviders();
-builder.Logging.AddSerilog(logger);
+builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+{
+    loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration)
+        .Enrich.FromLogContext();
+});
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -55,6 +54,9 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+//Add support to logging request with SERILOG
+app.UseSerilogRequestLogging();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -80,6 +82,7 @@ else
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
 app.UseHttpsRedirection();
 
 app.UseCors();
