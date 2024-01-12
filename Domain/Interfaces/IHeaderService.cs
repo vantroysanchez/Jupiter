@@ -6,6 +6,7 @@ namespace Domain.Interfaces
     public interface IHeaderService
     {
         IQueryable<Header> GetAll();
+        Task<IQueryable<Header>> GetAllAsync();
         Task<IEnumerable<Header>> GetWhere(Expression<Func<Header, bool>> predicate);
         Task<Header> GetById(int id);
         Task Add(Header entity, CancellationToken cancellationToken = default);

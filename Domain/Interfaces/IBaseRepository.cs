@@ -11,6 +11,7 @@ namespace Domain.Interfaces
         Task Update(T entity, CancellationToken cancellationToken);
         Task Remove(T entity, CancellationToken cancellationToken);
         IQueryable<T> GetAll();
+        Task<IQueryable<T>> GetAllAsync();
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
         Task<int> CountAll();
         Task<int> CountWhere(Expression<Func<T, bool>> predicate);

@@ -24,6 +24,11 @@ namespace Domain.Services
             return _repository.GetAll();
         }
 
+        public async Task<IQueryable<Header>> GetAllAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
+
         public async Task<Header> GetById(int id)
         {
             return await _repository.GetById(id);

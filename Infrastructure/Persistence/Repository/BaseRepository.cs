@@ -46,6 +46,12 @@ namespace Infrastructure.Persistence.Repository
         {
             return _context.Set<T>().AsQueryable();
         }
+        
+        public async Task<IQueryable<T>> GetAllAsync()
+        {
+            var result = await _context.Set<T>().ToListAsync();
+            return result.AsQueryable();
+        }
 
         public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate)
         {

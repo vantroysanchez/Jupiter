@@ -23,6 +23,11 @@ namespace Domain.Services
             return _repository.GetAll();
         }
 
+        public async Task<IQueryable<T>> GetAllAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
+
         public async Task Add(T entity, CancellationToken cancellationToken = default)
         {
             await _repository.Add(entity, cancellationToken);

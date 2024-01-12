@@ -10,6 +10,7 @@ namespace Domain.Interfaces
     public interface IBaseService<T> where T : class
     {
         IQueryable<T> GetAll();
+        Task<IQueryable<T>> GetAllAsync();
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
         Task Add(T entity, CancellationToken cancellationToken);
